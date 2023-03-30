@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimer = coyoteTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || coyoteTimer > 0))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && (isGrounded || coyoteTimer > 0))
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             coyoteTimer = 0;
