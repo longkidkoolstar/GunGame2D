@@ -2,20 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 7f;
     public float groundCheckDistance = 0.2f;
-    public LayerMask groundLayer;
+    public float coyoteTime = 0.1f;
+    public string groundTag = "Ground";
 
     private Rigidbody2D rb2d;
     private bool isGrounded = false;
+    private float coyoteTimer = 0f;
 
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        coyoteTimer -= Time.deltaTime;
+        if (isGrounded)
+        {
+            coyoteTimer = coyoteTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || coyoteTimer > 0))
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            coyoteTimer = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -26,17 +42,11 @@ public class PlayerMovement : MonoBehaviour
 
         rb2d.velocity = new Vector2(movement.x * speed, rb2d.velocity.y);
 
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, LayerMask.GetMask(groundTag));
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (!isGrounded)
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-        }
-        else
-        {
-            Debug.Log("Not the floor");
+            coyoteTimer -= Time.deltaTime;
         }
     }
 }
-
-
