@@ -43,10 +43,22 @@ public class PlayerMovement : MonoBehaviour
         rb2d.velocity = new Vector2(movement.x * speed, rb2d.velocity.y);
 
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, LayerMask.GetMask(groundTag));
-
+        
+ 
+        if (movement.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (movement.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+      
+      
         if (!isGrounded)
         {
             coyoteTimer -= Time.deltaTime;
         }
     }
 }
+

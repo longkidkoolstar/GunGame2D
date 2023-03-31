@@ -22,11 +22,14 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void Shoot()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb2d = bullet.GetComponent<Rigidbody2D>();
-        rb2d.velocity = firePoint.right * bulletVelocity;
-        Destroy(bullet, bulletRange);
-    }
+void Shoot()
+{
+    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    Rigidbody2D rb2d = bullet.GetComponent<Rigidbody2D>();
+    float bulletRange = 10f; // set your desired maximum range here
+    Vector2 direction = (firePoint.right + (Vector3.up * Random.Range(-0.05f, 0.05f))).normalized; // add a slight random vertical offset
+    rb2d.velocity = direction * bulletForce;
+    Destroy(bullet, bulletRange / bulletForce); // destroy the bullet after it has traveled its maximum range
+}
+
 }
