@@ -245,6 +245,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &589933060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6289944714324605639, guid: ab27487b2ac88ad4499d0c5ea501a631,
+    type: 3}
+  m_PrefabInstance: {fileID: 1948121278844063333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &589933064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589933060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -57143145, guid: a040fb66244a7f54289914d98ea4ef7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: f89b7ee79c401cd4f9d0c71bfe3f7c02, type: 2}
+--- !u!114 &589933065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589933060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1465209106, guid: c8d0ad23af520fe46aabe2b1fecf6462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Fire
+      Point","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Bullet
+      Prefab","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Bullet
+      Force","value":{"$content":20.0,"$type":"System.Single"},"$version":"A"},{"name":"Firerate","value":{"$content":2.0,"$type":"System.Single"},"$version":"A"},{"name":"Next
+      Fire Time","value":{"$content":0.2,"$type":"System.Single"},"$version":"A"},{"name":"Bullet
+      Range","value":{"$content":50.0,"$type":"System.Single"},"$version":"A"},{"name":"Bullet
+      Velocity","value":{"$content":300.0,"$type":"System.Single"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 1338703299}
+    - {fileID: 8723307326042015294, guid: 83672735a62c17848a86120b5f2fed70, type: 3}
 --- !u!1 &705296452
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +524,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1338703299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1948121279806841128, guid: ab27487b2ac88ad4499d0c5ea501a631,
+    type: 3}
+  m_PrefabInstance: {fileID: 1948121278844063333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2011563180
 GameObject:
   m_ObjectHideFlags: 3
@@ -649,6 +700,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1529894982838787538, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: fireRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529894982838787538, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: bulletForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529894982838787538, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: bulletRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529894982838787538, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: nextFireTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529894982838787538, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: bulletVelocity
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1948121279127069729, guid: ab27487b2ac88ad4499d0c5ea501a631,
         type: 3}
       propertyPath: m_Name
@@ -709,5 +785,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1529894982838787538, guid: ab27487b2ac88ad4499d0c5ea501a631, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ab27487b2ac88ad4499d0c5ea501a631, type: 3}
