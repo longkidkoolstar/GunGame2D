@@ -14,8 +14,8 @@ public class LookatMouse : MonoBehaviour
     void Update()
     {
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = - (transform.position.x - Camera.mainCamera.transform.position.x);
-        Vector3 worldPos = Camera.mainCamera.ScreenToWorldPoint (mousePos);
-        ransform.LookAt (worldPos);    
+        mousePos.z = - (transform.position.x - Camera.main.transform.position.x);
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint (mousePos);
+        transform.LookAt (worldPos);    
     }
 }
