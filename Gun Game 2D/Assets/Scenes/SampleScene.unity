@@ -283,7 +283,8 @@ MonoBehaviour:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Fire
       Point","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Bullet
       Prefab","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Bullet
-      Force","value":{"$content":30.0,"$type":"System.Single"},"$version":"A"},{"name":"Firerate","value":{"$content":2.0,"$type":"System.Single"},"$version":"A"},{"name":"Player","value":{"$content":2,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"CanShoot","value":{"$content":true,"$type":"System.Boolean"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      Force","value":{"$content":30.0,"$type":"System.Single"},"$version":"A"},{"name":"Firerate","value":{"$content":2.0,"$type":"System.Single"},"$version":"A"},{"name":"Player","value":{"$content":2,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"CanShoot","value":{"$content":true,"$type":"System.Boolean"},"$version":"A"},{"name":"Bullet
+      Destroy Time","value":{"$content":5,"$type":"System.Int32"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
     - {fileID: 1338703299}
     - {fileID: 8723307326042015294, guid: 83672735a62c17848a86120b5f2fed70, type: 3}
@@ -739,6 +740,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 1948121279127069730, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1948121279127069740, guid: ab27487b2ac88ad4499d0c5ea501a631,
         type: 3}
       propertyPath: m_RootOrder
@@ -818,6 +824,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayerID
       value: 754520169
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555708152234719604, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555708152234719604, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5555708152234719604, guid: ab27487b2ac88ad4499d0c5ea501a631,
         type: 3}
