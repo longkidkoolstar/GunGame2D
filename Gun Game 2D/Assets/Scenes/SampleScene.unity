@@ -283,13 +283,12 @@ MonoBehaviour:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Fire
       Point","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Bullet
       Prefab","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"Bullet
-      Force","value":{"$content":20.0,"$type":"System.Single"},"$version":"A"},{"name":"Firerate","value":{"$content":2.0,"$type":"System.Single"},"$version":"A"},{"name":"Next
-      Fire Time","value":{"$content":0.2,"$type":"System.Single"},"$version":"A"},{"name":"Bullet
-      Range","value":{"$content":50.0,"$type":"System.Single"},"$version":"A"},{"name":"Bullet
-      Velocity","value":{"$content":300.0,"$type":"System.Single"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      Force","value":{"$content":900.0,"$type":"System.Single"},"$version":"A"},{"name":"Firerate","value":{"$content":2.0,"$type":"System.Single"},"$version":"A"},{"name":"Bullet
+      Range","value":{"$content":50.0,"$type":"System.Single"},"$version":"A"},{"name":"Player","value":{"$content":2,"$type":"UnityEngine.Object"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
     - {fileID: 1338703299}
     - {fileID: 8723307326042015294, guid: 83672735a62c17848a86120b5f2fed70, type: 3}
+    - {fileID: 1218539742}
 --- !u!1 &705296452
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +523,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1218539742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1948121279127069729, guid: ab27487b2ac88ad4499d0c5ea501a631,
+    type: 3}
+  m_PrefabInstance: {fileID: 1948121278844063333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1338703299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1948121279806841128, guid: ab27487b2ac88ad4499d0c5ea501a631,
@@ -730,6 +735,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1948121279127069729, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1948121279127069740, guid: ab27487b2ac88ad4499d0c5ea501a631,
         type: 3}
       propertyPath: m_RootOrder
@@ -784,6 +794,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948121279127069741, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948121279127069741, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 142100847
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948121279806841129, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022623786004319584, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022623786004319584, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 754520169
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289944714324605639, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1529894982838787538, guid: ab27487b2ac88ad4499d0c5ea501a631, type: 3}
