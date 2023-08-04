@@ -1,0 +1,26 @@
+
+#unity-content-container {
+    padding-left: 6px;
+    padding-top: 2px;
+}
+
+#Title {
+    padding-left: 9px;
+    padding-top: 2px;
+    margin-bottom: 9px;
+    flex-grow: 0;
+}
+
+.unity-toggle {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.unity-label {
+    overflow: hidden;
+    flex-grow: 0.1;
+}
+
+.unity-enum-field {
+    margin-left: 1px;
+}
