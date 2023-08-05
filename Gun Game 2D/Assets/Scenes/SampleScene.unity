@@ -1468,6 +1468,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1948121279127069731, guid: ab27487b2ac88ad4499d0c5ea501a631,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948121279127069731, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
       propertyPath: m_Offset.x
       value: -0.001765728
       objectReference: {fileID: 0}
@@ -1581,12 +1586,17 @@ PrefabInstance:
         UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"typeHandle":{"Identification":"System.Collections.Generic.List`1[[UnityEngine.GameObject,
         UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"Health","value":{"$content":0.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"Guns","value":{"$content":[3,4],"$type":"System.Collections.Generic.List`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"typeHandle":{"Identification":"System.Collections.Generic.List`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"Selected
+        Weapon","value":{"$content":2,"$type":"System.Int32"},"typeHandle":{"Identification":"System.Int32,
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
       objectReference: {fileID: 0}
     - target: {fileID: 1948121279127069742, guid: ab27487b2ac88ad4499d0c5ea501a631,
         type: 3}
       propertyPath: _data._objectReferences.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1948121279127069742, guid: ab27487b2ac88ad4499d0c5ea501a631,
         type: 3}
@@ -1603,6 +1613,16 @@ PrefabInstance:
       propertyPath: _data._objectReferences.Array.data[2]
       value: 
       objectReference: {fileID: 451841736}
+    - target: {fileID: 1948121279127069742, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.data[3]
+      value: 
+      objectReference: {fileID: 589933060}
+    - target: {fileID: 1948121279127069742, guid: ab27487b2ac88ad4499d0c5ea501a631,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.data[4]
+      value: 
+      objectReference: {fileID: 404433335}
     - target: {fileID: 1948121279806841129, guid: ab27487b2ac88ad4499d0c5ea501a631,
         type: 3}
       propertyPath: m_Layer
@@ -1736,6 +1756,11 @@ PrefabInstance:
     - target: {fileID: 5774113593527133577, guid: e117e52306b3cf845be75e1daf74fe9e,
         type: 3}
       propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774113593527133577, guid: e117e52306b3cf845be75e1daf74fe9e,
+        type: 3}
+      propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents:
