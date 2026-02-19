@@ -57,13 +57,15 @@ public class PlayerMovement : MonoBehaviour
 
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, LayerMask.GetMask(groundTag));
 
-        if (movement.x > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (movement.x < 0)
+        // Flip character based on mouse position
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (mousePos.x < transform.position.x)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
 
         if (!isGrounded)

@@ -16,6 +16,7 @@ public class Gun : MonoBehaviour
     [SerializeField, Tooltip("Degrees of random spread")]
     private float spread = 2f;
     [SerializeField] private float bulletSpeed = 20f;
+    [SerializeField] private float projectileLifetime = 3f;
 
     [Header("Ammo")]
     [SerializeField] private int magazineSize = 10;
@@ -25,6 +26,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private bool useHitscan = false;
     [SerializeField] private float hitscanRange = 50f;
     [SerializeField] private LayerMask hitMask = ~0;
+    [SerializeField] private LineRenderer hitscanLine;
 
     private int currentAmmo;
     private bool isReloading = false;
@@ -36,6 +38,18 @@ public class Gun : MonoBehaviour
     void Awake()
     {
         currentAmmo = magazineSize;
+        if (useHitscan && hitscanLine == null)
+        {
+            GameObject lineObj = new GameObject("HitscanTrail");
+            lineObj.transform.SetParent(transform);
+            hitscanLine = lineObj.AddComponent<LineRenderer>();
+            hitscanLine.startWidth = 0.05f;
+            hitscanLine.endWidth = 0.05f;
+            hitscanLine.material = new Material(Shader.Find("Sprites/Default")); // Basic white material
+            hitscanLine.startColor = Color.yellow;
+            hitscanLine.endColor = new Color(1, 1, 0, 0); // Fade out
+            hitscanLine.enabled = false;
+        }
     }
 
     void Update()
@@ -80,31 +94,62 @@ public class Gun : MonoBehaviour
     {
         if (projectilePrefab == null || muzzlePoint == null) return;
 
-        float angle = Random.Range(-spread, spread);
-        Quaternion rot = Quaternion.Euler(0f, 0f, angle) * muzzlePoint.rotation;
+        // Calculate direction directly from mouse position ensures accuracy regardless of scale/rotation
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = 0f;
+        Vector2 direction = (mouseWorld - muzzlePoint.position).normalized;
 
-        GameObject proj = Instantiate(projectilePrefab, muzzlePoint.position, rot);
+        float angleOffset = Random.Range(-spread, spread);
+        // Apply spread rotation to the base direction
+        direction = Quaternion.Euler(0, 0, angleOffset) * direction;
+
+        // Determine rotation for the bullet sprite
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion bulletRot = Quaternion.Euler(0, 0, angle);
+
+        GameObject proj = Instantiate(projectilePrefab, muzzlePoint.position, bulletRot);
+        Destroy(proj, projectileLifetime);
         Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = rot * Vector3.right * bulletSpeed;
+            rb.velocity = direction * bulletSpeed;
         }
     }
 
     private void DoHitscan()
     {
         if (muzzlePoint == null) return;
-        // Base direction comes from the gun's world rotation (right vector)
-        Vector2 baseDir = muzzlePoint.right;
+        
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = 0f;
+        Vector2 direction = (mouseWorld - muzzlePoint.position).normalized;
+
         float angleOffset = Random.Range(-spread, spread);
-        Vector2 dir = (Quaternion.Euler(0f, 0f, angleOffset) * baseDir).normalized;
+        direction = Quaternion.Euler(0, 0, angleOffset) * direction;
+
         Vector2 origin = muzzlePoint.position;
-        Debug.DrawRay(origin, dir * hitscanRange, Color.red, 0.1f);
-        RaycastHit2D hit = Physics2D.Raycast(origin, dir, hitscanRange, hitMask);
+        Vector2 hitPoint = origin + direction * hitscanRange;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, hitscanRange, hitMask);
         if (hit.collider != null)
         {
+            hitPoint = hit.point;
             hit.collider.SendMessage("TakeDamage", 1, SendMessageOptions.DontRequireReceiver);
         }
+
+        if (hitscanLine != null)
+        {
+            StartCoroutine(ShowTrail(origin, hitPoint));
+        }
+    }
+
+    private IEnumerator ShowTrail(Vector3 start, Vector3 end)
+    {
+        hitscanLine.enabled = true;
+        hitscanLine.SetPosition(0, start);
+        hitscanLine.SetPosition(1, end);
+        yield return new WaitForSeconds(0.05f);
+        hitscanLine.enabled = false;
     }
 
     private void RotateToMouse()
@@ -117,15 +162,19 @@ public class Gun : MonoBehaviour
         mouseWorld.z = 0f;
 
         Vector2 dir = (mouseWorld - transform.position);
+        
+        // If the parent is flipped (negative X scale), we need to invert the X direction
+        // for local calculation so the gun points correctly relative to the flipped parent.
+        if (transform.lossyScale.x < 0)
+        {
+            dir.x = -dir.x;
+        }
+
         if (dir.sqrMagnitude <= 0.0001f) return;
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        // If object (or any parent) has an overall negative X scale, rotation appears mirrored.
-        // Compensate by adding 180 degrees when the combined X scale is negative.
-        if (Mathf.Sign(transform.lossyScale.x) < 0f) angle += 180f;
-
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        transform.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     private IEnumerator Reload()
